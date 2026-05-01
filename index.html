@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廈門旅行誌 | 6天5夜行程指南</title>
+    <style>
+        :root {
+            --paper-bg: #fdfaf2;
+            --ink-color: #2c3e50;
+            --accent-color: #8b4513;
+            --border-style: 2px solid #dcd7c9;
+            --shadow: 5px 5px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            background-color: #e0d8c3;
+            font-family: "PingFang TC", "Microsoft JhengHei", serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            color: var(--ink-color);
+        }
+
+        /* 桌面優先佈局：全寬容器 */
+        .app-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: var(--paper-bg);
+            border: var(--border-style);
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 280px 1fr; /* 多欄位佈局 */
+            min-height: 800px;
+            position: relative;
+        }
+
+        /* 擬物化邊界與紋理 */
+        .app-container::before {
+            content: "";
+            position: absolute;
+            left: 275px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(139, 69, 19, 0.2);
+            border-left: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* 側邊導航欄 */
+        nav {
+            padding: 40px 20px;
+            background: #faf7ef;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            color: var(--ink-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover, .active {
+            background: #f0e6d2;
+            border: 1px solid var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* 主內容區域 */
+        main {
+            padding: 50px 60px;
+            overflow-y: auto;
+            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+            background-size: 20px 20px; /* 輕微點狀紙張質感 */
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 1px dashed var(--accent-color);
+            padding-bottom: 15px;
+            margin-top: 0;
+        }
+
+        .itinerary-card {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid var(--accent-color);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: var(--border-style);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2ede4;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 針對小螢幕的適配（保持功能但不犧牲桌面美學） */
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr;
+                width: 95%;
+                margin: 10px auto;
+            }
+            .app-container::before { display: none; }
+            nav { border-bottom: var(--border-style); padding: 20px; }
+            main { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <nav>
+            <h1>廈門旅行誌</h1>
+            <a class="nav-item active" onclick="showSection('route')">🗓️ 六日行程</a>
+            <a class="nav-item" onclick="showSection('transport')">🚌 交通指南</a>
+            <a class="nav-item" onclick="showSection('food')">🍲 必吃美食</a>
+            <a class="nav-item" onclick="showSection('tips')">📝 出遊貼士</a>
+        </nav>
+
+        <main id="main-content">
+            <!-- 行程路線 -->
+            <section id="route" class="content-section active">
+                <h2>6天5夜 經典路線</h2>
+                
+                <div class="itinerary-card">
+                    <span class="badge">DAY 1</span>
+                    <strong>抵達廈門 - 慢遊中山路</strong>
+                    <p>下午抵達後入住中山路區。晚上步行於騎樓老街，感受南洋風情與小吃。</p>
+                </div>
+
+                <div class="itinerary-card">
+                    <span class="badge">DAY 2</span>
+                    <strong>海上花園 - 鼓浪嶼全日</strong>
+                    <p>菽莊花園、日光岩、萬國建築博覽。記得提前 10 天預約船票。</p>
+                </div>
+
+                <div class="itinerary-card">
+                    <span class="badge">DAY 3</span>
+                    <strong>文藝之島 - 南普陀 & 沙坡尾</strong>
+                    <p>上午南普陀寺參拜，下午逛沙坡尾文創區，夜晚看演武大橋燈光。</p>
+                </div>
+
+                <div class="itinerary-card">
+                    <span class="badge">DAY 4</span>
+                    <strong>最美海岸 - 環島路 & 八市</strong>
+                    <p>騎行環島路，傍晚去「八市」海鮮市場體驗最地道的市井氣息。</p>
+                </div>
+
+                <div class="itinerary-card">
+                    <span class="badge">DAY 5</span>
+                    <strong>學村文化 - 集美學村</strong>
+                    <p>跨海前往集美，看嘉庚風格建築，傍晚在十里長堤看日落。</p>
+                </div>
+
+                <div class="itinerary-card">
+                    <span class="badge">DAY 6</span>
+                    <strong>休閒返程</strong>
+                    <p>白鷺洲公園散步，購買阿吉仔餡餅作為伴手禮後前往機場。</p>
+                </div>
+            </section>
+
+            <!-- 交通指南 -->
+            <section id="transport" class="content-section">
+                <h2>交通攻略</h2>
+                <table>
+                    <tr>
+                        <th>類別</th>
+                        <th>建議方式</th>
+                    </tr>
+                    <tr>
+                        <td><strong>大交通</strong></td>
+                        <td>高崎機場(XMN) 或 廈門站(市區)/廈門北站(高鐵)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>鼓浪嶼</strong></td>
+                        <td>微信搜尋「嶼見廈門」提前預約 (RMB 35起)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>市內</strong></td>
+                        <td>地鐵1號線(海上地鐵)、滴滴打車、高德地圖</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- 必吃美食 -->
+            <section id="food" class="content-section">
+                <h2>閩南舌尖地圖</h2>
+                <ul>
+                    <li><strong>沙茶麵：</strong> 烏糖、月華（湯頭濃郁是靈魂）</li>
+                    <li><strong>海鮮：</strong> 八市阿杰五香、尚青海鮮加工</li>
+                    <li><strong>甜點：</strong> 黃則和花生湯、阿吉仔餡餅</li>
+                    <li><strong>特色：</strong> 土筍凍、海蠣煎、燒肉粽</li>
+                </ul>
+            </section>
+
+            <!-- 出遊貼士 -->
+            <section id="tips" class="content-section">
+                <h2>重要提醒</h2>
+                <div style="background: #fff; padding: 20px; border: 1px solid #ccc;">
+                    <p>✅ <strong>預約制：</strong> 廈大、植物園、南普陀皆需提前在微信公眾號預約。</p>
+                    <p>✅ <strong>防曬：</strong> 沿海城市紫外線極強，請備好傘與防曬霜。</p>
+                    <p>✅ <strong>住宿：</strong> 建議前 3 晚住思明區（中山路附近），最後可換至黃厝看海。</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // 切換內容
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+
+            // 切換導航樣式
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
